@@ -2,10 +2,28 @@ import frameworkData from "./framework.json";
 import { useState } from "react";
 export default function FrameworkList() {
   /** Deklrasai state **/
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTag, setSelectedTag] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [selectedTag, setSelectedTag] = useState("");
 
-  const _searchTerm = searchTerm.toLowerCase();
+  /*Inisialisasi DataForm*/
+		const [dataForm, setDataForm] = useState({
+			searchTerm: "",
+			selectedTag: "",
+      searchDev:"",
+			/*Tambah state lain beserta default value*/
+			});
+		
+		/*Inisialisasi Handle perubahan nilai input form*/
+		const handleChange = (evt) => {
+			const { name, value } = evt.target;
+			setDataForm({
+				...dataForm,
+				[name]: value,
+			});
+		};
+
+    /** Deklrasai Search & Filter **/
+  const _searchTerm = dataForm.searchTerm.toLowerCase();
   const filteredFrameworks = frameworkData.filter((framework) => {
     const matchesSearch =
       framework.name.toLowerCase().includes(_searchTerm) ||
@@ -67,13 +85,13 @@ export default function FrameworkList() {
           name="searchTerm"
           placeholder="Search framework..."
           className="w-full p-2 border border-gray-300 rounded mb-4"
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={handleChange}
         />
 
         <select
           name="selectedTag"
           className="w-full p-2 border border-gray-300 rounded mb-4"
-          onChange={(e) => setSelectedTag(e.target.value)}
+          onChange={handleChange}
         >
           
           <option value="">All Tags</option>
