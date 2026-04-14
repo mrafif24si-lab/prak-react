@@ -45,7 +45,7 @@ export default function Header() {
                     <span id="profile-text" className="text-gray-600 text-sm">
                         Hello, <b className="text-gray-800">Rafif</b>
                     </span>
-                    {/* Menggunakan link avatar yang berfungsi */}
+            
                     <img
                         id="profile-avatar"
                         src="public/img/profil.jpg"

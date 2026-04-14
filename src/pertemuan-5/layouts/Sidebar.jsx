@@ -21,21 +21,18 @@ export default function Sidebar() {
                 <ul id="menu-list" className="space-y-2">
                     <li>
                         <div id="menu-1" className="flex cursor-pointer items-center rounded-xl p-3 font-medium text-gray-600 hover:bg-green-50 hover:text-hijau">
-                            {/* Icon Grid/Dashboard */}
                             <FaThLarge className="mr-4 text-lg" />
                             Dashboard
                         </div>
                     </li>
                     <li>
                         <div id="menu-2" className="flex cursor-pointer items-center rounded-xl p-3 font-medium text-gray-600 hover:bg-green-50 hover:text-hijau">
-                            {/* Icon List/Orders */}
                             <FaListUl className="mr-4 text-lg" />
                             Orders
                         </div>
                     </li>
                     <li>
                         <div id="menu-3" className="flex cursor-pointer items-center rounded-xl p-3 font-medium text-gray-600 hover:bg-green-50 hover:text-hijau">
-                            {/* Icon Headset/Customers */}
                             <FaHeadset className="mr-4 text-lg" />
                             Customers
                         </div>
