@@ -37,29 +37,40 @@
 
 // export default App;
 
-import { useState } from "react";
+import React, { Suspense, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./assets/tailwind.css";
 
-import Dashboard from "./pages/Dashboard";
+// import Dashboard from "./pages/Dashboard";
+const Dashboard = React.lazy(() => import("./pages/Dashboard"))
 import { Route, Routes } from "react-router-dom";
-import Orders from "./pages/Orders";
-import Customers from "./pages/Customers";
-import ErrorDisplay from "./pages/ErrorDisplay"; // Import ErrorDisplay
-import MainLayout from "./layouts/MainLayout";
-import AuthLayout from "./layouts/AuthLayout";
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
-import Forgot from "./pages/Auth/Forget";
+import Loading from "./components/Loading";
+// import Orders from "./pages/Orders";
+const Orders = React.lazy(() => import("./pages/Orders"))
+// import Customers from "./pages/Customers";
+const Customers = React.lazy(() => import("./pages/Customers"))
+// import ErrorDisplay from "./pages/ErrorDisplay"; 
+const ErrorDisplay = React.lazy(() => import("./pages/ErrorDisplay"))
+// import MainLayout from "./layouts/MainLayout";
+const MainLayout = React.lazy(() => import("./layouts/MainLayout"))
+// import AuthLayout from "./layouts/AuthLayout";
+const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"))
+// import Login from "./pages/Auth/Login";
+const Login = React.lazy(() => import("./pages/Auth/Login"))
+// import Register from "./pages/Auth/Register";
+const Register = React.lazy(() => import("./pages/Auth/Register"))
+// import Forgot from "./pages/Auth/Forget";
+const Forgot = React.lazy(() => import("./pages/Auth/Forget"))
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
+    <Suspense fallback={<Loading />}>
+
           <Routes>
             <Route element={<MainLayout/>}>
-            
             <Route path="/" element={<Dashboard />} />
             <Route path="/orders" element={<Orders/>} />
             <Route path="/customers" element={<Customers/>} />
@@ -70,9 +81,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register/>} />
             <Route path="/forgot" element={<Forgot/>} />
-        </Route>
-
+            </Route>
           </Routes>
+          </Suspense>
           
        
   )
